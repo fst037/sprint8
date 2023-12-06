@@ -1,0 +1,59 @@
+<!-- home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+  <h2>Home</h2>
+  <!-- PRUEBAS -->
+  <button id="fetchButton">Obtener saldo</button>
+  <div id="responseContainer"></div>
+
+  <script>
+    document.getElementById('fetchButton').addEventListener('click', function() {
+      fetch('http://127.0.0.1:8000/api/cuentas', {
+        method: 'GET',
+        credentials: 'include'
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('responseContainer').innerText = JSON.stringify(data);
+      })
+      .catch(error => console.error('Error:', error));
+    });
+  </script>
+
+<select id="tipoCuenta">
+  <option value="CCPesos">CCPesos</option>
+  <option value="CCDolares">CCDolares</option>
+  <option value="CAPesos">CAPesos</option>
+  <option value="CADolares">CADolares</option>
+  <option value="CuentaInversion">CuentaInversion</option>
+  <!-- Agrega más opciones según los tipos de cuenta que permitas -->
+</select>
+
+<button id="crearCuentaButton">Crear cuenta</button>
+
+<script>
+  document.getElementById('crearCuentaButton').addEventListener('click', function() {
+  var tipoCuenta = document.getElementById('tipoCuenta').value;
+  var csrftoken = document.cookie.split('; ').find(row => row.startsWith('csrftoken')).split('=')[1];
+  fetch('http://127.0.0.1:8000/api/cuentas/', {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': csrftoken
+    },
+    body: JSON.stringify({ tipo: tipoCuenta })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Cuenta creada:', data);
+  })
+  .catch(error => console.error('Error:', error));
+});
+</script>
+
+
+{% endblock %}

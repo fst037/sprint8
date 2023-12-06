@@ -1,0 +1,66 @@
+.contenedorFormulario{
+    /* background-color: beige; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+.registrarse{
+    background-color: #ea6cb49b;
+    margin-bottom: 5px;
+    padding: 9px;
+    border-radius: 10px;
+    color: beige;
+    box-shadow: 0px 1.4px 2px 1.5px beige;
+}
+
+.formularioLogin{
+    background-color: #ff7dc7db;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+    margin: 60px;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.textoRegistroCuenta{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.textoRegistroCuenta a {
+    color: #222;
+}
+
+.labelUsuario, .labelContrasenia{
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 19px;
+}
+.inputUsuario, .inputContrasenia{
+    padding: 10px;
+    width: 100%;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #fffafa;
+}
+
+.botonFormulario{
+    background-color: #222;
+    color: #fff;
+    margin-top: 15px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}

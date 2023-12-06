@@ -1,0 +1,53 @@
+.color1 {
+    color: #55254e;
+  }
+  
+  .color2 {
+    color: #82366e;
+  }
+  
+  .color3 {
+    color: #ca5095;
+  }
+  
+  .color4 {
+    color: #ff7dc6;
+  }
+  
+  .color5 {
+    color: #ffaef3;
+  }
+  
+  .converter-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 50px;
+   /*  height: 250px; */
+  }
+  
+  .input-container {
+    flex: 1;
+    margin: 0 10px;
+  }
+  
+  .pesoARG {
+    font-weight: bold;
+  }
+  
+  .inputClass {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .encabezado {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #55254e; 
+  }

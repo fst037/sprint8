@@ -1,0 +1,112 @@
+.contenedor{
+    margin: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 2px solid #3a4963;
+    border-radius: 10px;
+}
+
+.contenedorSinBorde {
+    margin: 20px;
+    box-sizing: border-box;
+}
+
+.contenedor h4 {
+    margin: 15px;
+    font-weight: normal;
+}
+
+.contenedorSinBorde h4 {
+    margin: 15px;
+    font-weight: normal;
+}
+
+.contenedorSinBorde h2 {
+    margin: 0px;
+}
+
+.historial {
+    list-style-type: none;
+    padding: 15px;
+    padding-top: 10px;    
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    margin: 15px
+}
+
+.linkCuenta {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 25px;
+    margin: 15px;
+    border-bottom: 2px solid #fff;
+}
+
+.linkCuenta:hover {
+    color: #3a4963;
+    border-bottom: 2px solid #3a4963;
+}
+
+.filaHistorial{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0.5rem;
+    margin: 0px 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.cabeceraHistorial {
+    display: flex;
+    padding: 5px;
+    flex-direction: row;
+    list-style-type: none;
+    font-size: large;
+    margin: 0px 10px;
+    border-bottom: 2px solid #444;
+    font-weight: bold;
+}
+
+.descripcion {
+    width: 40%;
+}
+
+.estado {
+    width: 20%;
+}
+
+.fecha {
+    width: 20%;
+}
+
+.cantidad {
+    width: 20%;
+}
+
+@media screen and (max-width: 762px) {
+    .filaHistorial {
+        flex-direction: column;
+        list-style-type: decimal;
+        padding-left: 20px;
+    }
+    .cabeceraHistorial{
+        flex-direction: column;
+        list-style-type: decimal;
+        padding-left: 20px;
+    }
+    .descripcion {
+        width: 100%;
+    }
+    .estado {
+        width: 100%;
+    }
+    .fecha {
+        width: 100%;
+    }
+    .cantidad {
+        width: 100%;
+    }        
+}
+   

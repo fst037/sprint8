@@ -1,0 +1,26 @@
+/* FILEPATH: /c:/Users/brufa/Documents/ITBA/itbank-10-next/src/app/components/historialTransferencias/historialTransferencias.module.css */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* th,
+td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+} */

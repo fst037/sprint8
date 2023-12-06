@@ -1,0 +1,13 @@
+.list-container {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .list-item {
+    list-style-type: disc;
+    margin: 5px 0;
+    font-size: 18px;
+    color: #333;
+  }

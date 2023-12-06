@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Datos Cliente {{cliente.customer_name}}{% endblock %}
+
+{% block content %}
+<h2>Datos Cliente</h2>
+
+<ul>
+  <li>Id: {{cliente.customer_id}}</li>
+  <li>Nombre: {{cliente.customer_name}}</li>
+  <li>Apellido: {{cliente.customer_surname}}</li>
+  <li>DNI: {{cliente.customer_dni}}</li>
+  <li>Fecha de Nacimiento: {{cliente.dob}}</li>
+  <li>Sucursal: {{cliente.branch_id}}</li>
+  <li>tipo de cliente: {{cliente.customer_type}}</li>
+</ul>
+
+{% endblock %}
+
+

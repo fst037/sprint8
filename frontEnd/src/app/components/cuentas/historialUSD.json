@@ -1,0 +1,56 @@
+[
+    {
+        "descripcion": "Conversion de Monedas",
+        "cantidad": 116.75,
+        "estado": 719.8699999999999,
+        "fecha": "30/9/2023, 20:05:19"
+    },
+    {
+        "descripcion": "Pago de Prestamo en Dolares a 6 meses (cuota 1)",
+        "cantidad": -95.88,
+        "estado": 603.1199999999999,
+        "fecha": "30/9/2023, 20:04:39"
+    },
+    {
+        "descripcion": "Pago de Prestamo en Dolares a 6 meses (cuota 4)",
+        "cantidad": -95.88,
+        "estado": 698.9999999999999,
+        "fecha": "30/9/2023, 20:04:19"
+    },
+    {
+        "descripcion": "Pago de Prestamo en Dolares a 6 meses (cuota 3)",
+        "cantidad": -95.88,
+        "estado": 794.8799999999999,
+        "fecha": "30/9/2023, 20:04:19"
+    },
+    {
+        "descripcion": "Pago de Prestamo en Dolares a 6 meses (cuota 2)",
+        "cantidad": -95.88,
+        "estado": 890.7599999999999,
+        "fecha": "30/9/2023, 20:04:19"
+    },
+    {
+        "descripcion": "Transferencia a CVU 5234523",
+        "cantidad": -543,
+        "estado": 986.6399999999999,
+        "fecha": "30/9/2023, 20:04:08"
+    },
+    {
+        "descripcion": "Prestamo en Dolares a 6 meses",
+        "cantidad": 523,
+        "estado": 1529.6399999999999,
+        "fecha": "30/9/2023, 20:03:54"
+    },
+    {
+        "descripcion": "Conversion de Monedas",
+        "cantidad": 6.64,
+        "estado": 1006.64,
+        "fecha": "30/9/2023, 20:03:38"
+    },
+    {
+        "descripcion": "Saldo Inicial",
+        "cantidad": 1000,
+        "estado": 1000,
+        "fecha": "30/9/2023, 20:03:29"
+    }
+]

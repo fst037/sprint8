@@ -1,0 +1,26 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Título por defecto{% endblock %}</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styles.css' %}">  
+</head>
+<body>  
+  <h2>Bienvenido a ITBANK</h2>
+  {% if user.is_authenticated %}
+    <ul class="navbar">
+      <li class="navbar-item"><h3>Hola {{ user.username }}</h3></li>
+      <li class="navbar-item"><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+    </ul>
+
+    {% block content %}{% endblock %}
+
+  {% else %}
+    <p><a href="{% url 'login' %}">Iniciar Sesión</a></p>
+    <p><a href="{% url 'register' %}">Registrarse</a></p>
+  {% endif %}
+</body>
+</html>

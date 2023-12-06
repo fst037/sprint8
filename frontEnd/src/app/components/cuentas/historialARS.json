@@ -1,0 +1,26 @@
+[
+    {
+        "descripcion": "Conversion de Monedas",
+        "cantidad": -41234,
+        "estado": 69844,
+        "fecha": "30/9/2023, 20:05:19"
+    },
+    {
+        "descripcion": "Prestamo en Pesos a 3 meses",
+        "cantidad": 13423,
+        "estado": 111078,
+        "fecha": "30/9/2023, 20:04:55"
+    },
+    {
+        "descripcion": "Conversion de Monedas",
+        "cantidad": -2345,
+        "estado": 97655,
+        "fecha": "30/9/2023, 20:03:38"
+    },
+    {
+        "descripcion": "Saldo Inicial",
+        "cantidad": 100000,
+        "estado": 100000,
+        "fecha": "30/9/2023, 20:03:29"
+    }
+]
