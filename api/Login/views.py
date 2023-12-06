@@ -22,6 +22,7 @@ class LoginAPIView(APIView):
 
     def get(self, request, format=None):
         user = request.user
+        print(user)
         serializer = UserSerializer(user)
         return Response(serializer.data)
         

@@ -14,10 +14,10 @@ import string
 
 # Create your views here.
 
-class CuentasCliente(APIView):
+class CuentasCliente(APIView):    
     authentication_classes = [SessionAuthentication]
     permission_classes = [IsAuthenticated]
-
+    
     def get(self, request):
         cuentas = Cuenta.objects.filter(customer_id=request.user.userprofile.customer_id)
         data = []

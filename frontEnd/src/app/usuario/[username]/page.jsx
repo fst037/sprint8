@@ -14,7 +14,7 @@ const PaginaUsuario = ({ params }) => {
 
   const infoCuenta = async (username, password) => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/clientes', {
+      const response = await axios.get('http://127.0.0.1:8000/api/datos/', {
         headers: {
           Authorization: `Basic ${btoa(`${username}:${password}`)}`
         }
@@ -33,7 +33,7 @@ const PaginaUsuario = ({ params }) => {
   }, []);
 
   return (
-    <>
+    <>      
       {customerData && (
         <div>
           <h1>Bienvenido {customerData.customer_name}</h1>

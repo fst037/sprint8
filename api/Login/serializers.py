@@ -6,7 +6,7 @@ from Clientes.models import Cliente
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'password', 'customer_id')
+        fields = ('username', 'password')
 
 class RegisterUserSerializer(UserSerializer):
     class Meta(UserSerializer.Meta):
