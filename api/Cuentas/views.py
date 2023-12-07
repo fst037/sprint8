@@ -3,7 +3,7 @@ from django.views import View
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.authentication import SessionAuthentication 
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 from .serializers import CuentaSerializer, SolicitudCuentaSerializer
 
@@ -15,7 +15,7 @@ import string
 # Create your views here.
 
 class CuentasCliente(APIView):    
-    authentication_classes = [SessionAuthentication]
+    authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
     
     def get(self, request):
@@ -30,7 +30,7 @@ class CuentasCliente(APIView):
         serializer = SolicitudCuentaSerializer(data=request.data)
         
         if serializer.is_valid():
-            def generate_iban(country_code='ES'):
+            def generate_iban(country_code='AR'):
                 control_digits = ''.join(random.choices(string.digits, k=2))
                 account_number = ''.join(random.choices(string.digits, k=20))
                 iban = country_code + control_digits + account_number
@@ -45,3 +45,37 @@ class CuentasCliente(APIView):
             
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class CuentaCliente(APIView):
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request, cuenta):
+        cuenta = Cuenta.objects.get(account_id=cuenta)
+
+        if not request.user.userprofile.customer_id == cuenta.customer_id.customer_id:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        serializer = CuentaSerializer(cuenta)
+        return Response(serializer.data)
+    
+    def put(self, request, cuenta):
+        cuenta = Cuenta.objects.get(account_id=cuenta)
+
+        if not request.user.userprofile.customer_id == cuenta.customer_id.customer_id:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        serializer = CuentaSerializer(cuenta, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+    
+    def delete(self, request, cuenta):
+
+        if not request.user.userprofile.customer_id == cuenta.customer_id.customer_id:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        cuenta = Cuenta.objects.get(account_id=cuenta)
+        cuenta.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

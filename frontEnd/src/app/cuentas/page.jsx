@@ -1,37 +1,66 @@
+'use client'
+
 import HistorialCuenta from "../components/cuentas/HistorialCuenta";
 import TituloPagina from "../components/globales/TituloPagina";
 import Link from "next/link";
 import styles from "../components/cuentas/cuentas.module.css";
-import saldos from '../components/cuentas/saldos.json'
-import React from 'react'
+import React from "react";
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
-const page = () => {
+const pageCuentas = () => {
 
-    //deberia haber una api que devuelva los saldos de las cuentas al fetchearla
-    //actualizar cuando aprendamos backend
+    const username = localStorage.getItem('username');
+    const password = localStorage.getItem('password');
 
-    const saldoARS = saldos[0].value;
-    const saldoUSD = saldos[1].value;
+    const [cuentasData, setCuentasData] = useState(null);
+
+    const cuentas = async (username, password) => {
+        try {
+        const response = await axios.get('http://127.0.0.1:8000/api/cuentas/', {
+            headers: {
+            Authorization: `Basic ${btoa(`${username}:${password}`)}`
+            }
+        });
+
+        if (response.status === 200) {
+					setCuentasData(response.data);
+        }
+        } catch (error) {
+        console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        cuentas(username, password);
+    }, []);
+
 
     return ( 
         <>
             <TituloPagina contenido={'Cuentas'}/>
-            <div>
-                <Link href="/cuentas/ARS"className={styles.linkCuenta}>
-                    Caja de Ahorro en Pesos: ${saldoARS}          
-                </Link>
-                <h4>Ultimos 5 Movimientos:</h4>
-                <HistorialCuenta Cuenta={'ARS'} ult_5={true}/>
-            </div>
-            <div>
-                <Link href="/cuentas/USD"className={styles.linkCuenta}>
-                    Caja de Ahorro en Dolares: ${saldoUSD}
-                </Link>
-                <h4>Ultimos 5 Movimientos:</h4>
-                <HistorialCuenta Cuenta={'USD'} ult_5={true}/>
-            </div>
+						<div>
+							{cuentasData != null ? 
+								<div className={styles.listaCuentas}>
+									{cuentasData.map((cuenta, index) => (
+										
+										<>
+											<Link key={index} href={"/cuentas/" + cuenta.account_id} className={styles.linkCuenta}>
+												<li>{cuenta.tipo}</li>
+												<li>$ {cuenta.balance / 100}</li>											
+												<li>{cuenta.iban}</li>
+											</Link>
+											<h4 style={{padding: '0px 15px'}}>Ultimos 5 Movimientos:</h4>
+											<HistorialCuenta cuenta={cuenta.account_id} ult_5={true}/>
+										</>
+									))}
+								</div>								
+								: 
+								<h1> No hay cuentas </h1>}
+							
+						</div>
         </>
     );
 }
 
-export default page
+export default pageCuentas

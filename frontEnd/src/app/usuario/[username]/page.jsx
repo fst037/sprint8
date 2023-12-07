@@ -1,5 +1,5 @@
 'use client'
-import { redirect } from "next/navigation";
+import TituloPagina from '@/app/components/globales/TituloPagina';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
@@ -12,7 +12,7 @@ const PaginaUsuario = ({ params }) => {
 
   const [customerData, setCustomerData] = useState(null);
 
-  const infoCuenta = async (username, password) => {
+  const infoUsuario = async (username, password) => {
     try {
       const response = await axios.get('http://127.0.0.1:8000/api/datos/', {
         headers: {
@@ -29,15 +29,16 @@ const PaginaUsuario = ({ params }) => {
   };
 
   useEffect(() => {
-    infoCuenta(username, password);
+    infoUsuario(username, password);
   }, []);
 
   return (
     <>      
       {customerData && (
         <div>
-          <h1>Bienvenido {customerData.customer_name}</h1>
+          <TituloPagina contenido={'Usuario ' + usuarioDecodificado} />
           <p>Customer ID: {customerData.customer_id}</p>
+          <p>Customer Name: {customerData.customer_name}</p>
           <p>Customer Surname: {customerData.customer_surname}</p>
           <p>Customer DNI: {customerData.customer_dni}</p>
           <p>Date of Birth: {customerData.dob}</p>

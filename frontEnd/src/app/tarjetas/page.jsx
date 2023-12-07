@@ -21,7 +21,7 @@ export default function Page() {
       <Link href={`/tarjetas/${Cards.id}`}>
       <Cards
             name="John Smith"
-            number="4111 1111 1111 1111"
+            number="4111 1111 1111 1112"
             expiry="10/20"
             cvc="737"
           />
