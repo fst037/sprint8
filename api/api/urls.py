@@ -18,10 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 from Clientes.views import DatosCliente
 from Prestamos.views import PrestamosCliente
-from Cuentas.views import CuentasCliente
+from Cuentas.views import CuentaCliente, CuentasCliente
 from Login.views import LoginView, LogoutView, RegisterView, HomeView,  LoginAPIView
 from Clientes.views import DatosCliente
 from Negocio.views import ListarSucursales
+from Movimientos.views import MovimientosCuenta
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,6 +34,8 @@ urlpatterns = [
     path('api-auth/', LoginAPIView.as_view(), name='api-login'),
     path('api/datos/', DatosCliente.as_view(), name='datos_cliente'),
     path('api/cuentas/', CuentasCliente.as_view(), name='cuentas_cliente'),
+    path('api/cuentas/<int:cuenta>/', CuentaCliente.as_view(), name='cuenta_cliente'),
+    path('api/cuentas/<int:cuenta>/movimientos/', MovimientosCuenta.as_view(), name='movimientos_cuenta'),
     path('api/prestamos/', PrestamosCliente.as_view(), name='prestamos_cliente'),
     path('api/sucursales/', ListarSucursales.as_view(), name='listar_sucursales'),
 ]

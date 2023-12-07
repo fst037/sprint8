@@ -3,10 +3,8 @@
 import styles from './login-singin.module.css';
 import { useState } from 'react';
 import Link from 'next/link';
-import cuentas from '../cuentas/cuentas.json'
-import { redirect, usePathname } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import axios from 'axios';
-import { useRouter } from 'next/router';
 
 function LoginCampos() {
 
@@ -26,8 +24,9 @@ function LoginCampos() {
       if (response.status === 200) {
         // Store user credentials in local storage or cookie
         localStorage.setItem('username', username);
-        localStorage.setItem('password', password);
-        router.push('/usuario/' + username);
+        localStorage.setItem('password', password);        
+        window.location.href = '/';
+        redirect('/');        
       }
     } catch (error) {
       console.error(error);

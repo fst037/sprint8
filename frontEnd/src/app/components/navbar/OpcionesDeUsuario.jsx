@@ -20,7 +20,7 @@ function OpcionesLista({ isOpen }) {
     <>
       <ul className={claseOpciones}>
         <li className={styles.navBarListElem}>
-          <Link href={typeof window !== 'undefined' && localStorage.getItem('usuarioActivo') != undefined ? '/usuario/' + localStorage.getItem('usuarioActivo') : '/usuario'} className={styles.menuBoton} onClick={handleIrUsuario}>
+          <Link href='/usuario' className={styles.menuBoton} onClick={handleIrUsuario}>
             Mi Perfil
           </Link>
         </li>

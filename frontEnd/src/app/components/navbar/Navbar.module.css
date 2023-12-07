@@ -48,8 +48,8 @@
   background-color: #82366e;
   list-style: none;
   position: fixed;
-  top: -200px;
-  right: 0px;
+  top: 80px;
+  right: -200px;
   border-radius: 0 0 0 10px;  
   transition: all 0.5s ease-in-out;
   margin: 0px;
@@ -62,14 +62,14 @@
   background-color: #82366e;
   list-style: none;
   position: fixed;
-  top: -200px;
-  right: 0px;
+  top: 80px;
+  right: -200px;
   border-radius: 0 0 0 10px;  
   transition: all 0.5s ease-in-out;
   margin: 0px;
   padding: 0px;
   z-index: 0;
-  transform: translateY(280px);
+  transform: translateX(-200px);
 }
 
 .itbankLogo{
