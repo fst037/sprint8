@@ -19,7 +19,7 @@ from django.urls import path, include
 from Clientes.views import DatosCliente
 from Prestamos.views import PrestamosCliente
 from Cuentas.views import CuentasCliente
-from Login.views import LoginView, LogoutView, RegisterView, HomeView,  LoginAPIView
+from Login.views import LoginView, LogoutView, RegisterView, HomeView,  LoginAPIView, RegisterAPIView
 from Clientes.views import DatosCliente
 from Negocio.views import ListarSucursales
 
@@ -31,6 +31,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(),name='logout'),
 
     path('api-auth/', LoginAPIView.as_view(), name='api-login'),
+    path('api-auth/register/', RegisterAPIView.as_view(), name='api-register'),
     path('api/datos/', DatosCliente.as_view(), name='datos_cliente'),
     path('api/cuentas/', CuentasCliente.as_view(), name='cuentas_cliente'),
     path('api/prestamos/', PrestamosCliente.as_view(), name='prestamos_cliente'),
