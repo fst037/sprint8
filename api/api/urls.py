@@ -25,6 +25,7 @@ from Login.views import LoginView, LogoutView, RegisterView, HomeView,  LoginAPI
 from Clientes.views import DatosCliente
 from Negocio.views import ListarSucursales
 from Movimientos.views import MovimientosCuenta
+from Tarjetas.views import TarjetasClienteAPI
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -41,4 +42,5 @@ urlpatterns = [
     path('api/cuentas/<int:cuenta>/movimientos/', MovimientosCuenta.as_view(), name='movimientos_cuenta'),
     path('api/prestamos/', PrestamosCliente.as_view(), name='prestamos_cliente'),
     path('api/sucursales/', ListarSucursales.as_view(), name='listar_sucursales'),
+    path('api/tarjetas/', TarjetasClienteAPI.as_view(), name='tarjetas_cliente'),
 ]

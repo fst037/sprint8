@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from Clientes.models import Cliente
-from .models import Prestamo
+from .models import Prestamo 
 
 class PrestamoSerializer(serializers.ModelSerializer):    
     loan_date = serializers.DateField(required=False)

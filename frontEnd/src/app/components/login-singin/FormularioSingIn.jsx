@@ -3,53 +3,44 @@
 import { useState } from "react";
 import Link from "next/link";
 import styles from "./login-singin.module.css";
-import cuentas from '../cuentas/cuentas.json'
+import axios from 'axios';
 
 function RegisterCampos() {
+  const [username, setUsername] = useState("");
+  const [customer, setCustomerId] = useState("");
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validación del correo electrónico
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const isValid = emailPattern.test(email);
+    if (password !== passwordConfirmation) {
+      alert("Las contraseñas no coinciden");
+      return;
+    }
 
-    if (isValid) {      
-      
-      const listaCuentas = cuentas;
-      const intentoLogin = {usuario: email, contraseña: password};
-/*       const addUserToJSON = (newUser) => {
-        const users = require('../cuentas/cuentas.json');
-        users.push(newUser);
-        const json = JSON.stringify(users);
-        fs.writeFileSync('../cuentas/cuentas.json', json);
-      } */
 
-      const usuarioEncontrado = listaCuentas.find((cuenta) => {
-          return cuenta.usuario === intentoLogin.usuario && cuenta.contraseña === intentoLogin.contraseña;
-        });
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/api-auth/register/', {
+        username,
+        customer: Number(customer),
+        password,
+      });
 
-      if (listaCuentas.includes(usuarioEncontrado)) {              
-        alert("Usuario ya registrado");
-        setEmail('');
-        setPassword('');
-      } else {
-        listaCuentas.push(intentoLogin);
+      if (response.status === 201) {
         alert("Usuario registrado con éxito");
-        localStorage.setItem('usuarioActivo', email)
-        window.location.href = '/'
-        /* addUserToJSON(intentoLogin); */
+        localStorage.setItem('username', username);
+        localStorage.setItem('password', password);        
+        window.location.href = '/';
+        redirect('/');     
       }
-            
-    } else {
-    // El correo electrónico no es válido
-        alert("El correo electrónico no es válido");
-        setPassword('');
-        setEmail('');
+    } catch (error) {
+      console.error(error);
+      alert("Error al registrar el usuario");
     }
   };
+
 
   return (
     <div className={styles.contenedorFormulario}>
@@ -63,10 +54,23 @@ function RegisterCampos() {
           type="text"
           name="usuario"
           placeholder="Ingrese un usuario"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
+
+        <label className={styles.labelUsuario}>Customer id:</label>
+        <input
+          className={styles.inputUsuario}
+          type="number"
+          value={customer}
+          onChange={(e) => setCustomerId(e.target.value)}
+        />
+
         <label className={styles.labelContrasenia}>Contraseña</label>
+        <p>Your password can’t be too similar to your other personal information.</p>
+        <p>Your password can’t be entirely numeric.</p>
+        <p>Your password can’t be a commonly used password.</p>
+        <p>Your password must contain at least 8 characters.</p>
         <input
           className={styles.inputContrasenia}
           type="password"
@@ -75,10 +79,21 @@ function RegisterCampos() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className={styles.botonFormulario}>Enviar</button>
+
+        <label className={styles.labelContrasenia}>Confirmación de contraseña</label>
+        <input
+          className={styles.inputContrasenia}
+          type="password"
+          value={passwordConfirmation}
+          onChange={(e) => setPasswordConfirmation(e.target.value)}
+        />
+
+        {passwordError && <p className={styles.passwordError}>{passwordError}</p>}
+
+        <button type="submit" className={styles.botonFormulario}>Registrar</button>
       </form>
       <p className={styles.textoRegistroCuenta}>
-        ¿Ya tienes una cuenta? <Link href="/login">Inicia sesión</Link>
+        ¿Ya tienes una cuenta? <Link href="/login">Iniciar sesión</Link>
       </p>
     </div>
   );
