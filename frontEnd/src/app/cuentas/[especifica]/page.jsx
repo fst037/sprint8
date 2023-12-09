@@ -19,7 +19,7 @@ function PagCuentaEspecifica({params}) {
         try {
         const response = await axios.get(linkCuenta, {
             headers: {
-							Authorization: `Basic ${btoa(`${username}:${password}`)}`
+				Authorization: `Basic ${btoa(`${username}:${password}`)}`
             }
         });
 

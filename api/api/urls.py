@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from Clientes.views import DatosCliente
-from Prestamos.views import PrestamosCliente
+from Prestamos.views import PrestamosCliente, PrestamosClienteEmpleado, PrestamosSucursal
 from Cuentas.views import CuentasCliente
 from Login.views import LoginView, LogoutView, RegisterView, HomeView,  LoginAPIView, RegisterAPIView
 from Cuentas.views import CuentaCliente, CuentasCliente
@@ -25,7 +25,7 @@ from Login.views import LoginView, LogoutView, RegisterView, HomeView,  LoginAPI
 from Clientes.views import DatosCliente
 from Negocio.views import ListarSucursales
 from Movimientos.views import MovimientosCuenta
-from Tarjetas.views import TarjetasClienteAPI
+from Tarjetas.views import TarjetasCliente, TarjetasClienteEmpleado
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,10 +37,15 @@ urlpatterns = [
     path('api-auth/', LoginAPIView.as_view(), name='api-login'),
     path('api-auth/register/', RegisterAPIView.as_view(), name='api-register'),
     path('api/datos/', DatosCliente.as_view(), name='datos_cliente'),
+    path('api/datos/<int:customer_id>/', DatosCliente.as_view(), name='datos_cliente_desde_empleado'),
     path('api/cuentas/', CuentasCliente.as_view(), name='cuentas_cliente'),
     path('api/cuentas/<int:cuenta>/', CuentaCliente.as_view(), name='cuenta_cliente'),
     path('api/cuentas/<int:cuenta>/movimientos/', MovimientosCuenta.as_view(), name='movimientos_cuenta'),
     path('api/prestamos/', PrestamosCliente.as_view(), name='prestamos_cliente'),
+    path('api/prestamos/<int:customer_id>/', PrestamosClienteEmpleado.as_view(), name='prestamos_cliente_desde_empleado'),
+    path('api/prestamos/eliminar/<int:loan_id>/', PrestamosClienteEmpleado.as_view(), name='prestamos_eliminar'),
+    path('api/prestamos/sucursal/<int:branch_id>/', PrestamosSucursal.as_view(), name='prestamos_sucursal'),
     path('api/sucursales/', ListarSucursales.as_view(), name='listar_sucursales'),
-    path('api/tarjetas/<int:customer_id>/', TarjetasClienteAPI.as_view(), name='tarjetas_cliente'),
+    path('api/tarjetas/', TarjetasCliente.as_view(), name='tarjetas_cliente'),
+    path('api/tarjetas/<int:customer_id>/', TarjetasClienteEmpleado.as_view(), name='tarjetas_cliente_desde_empleado'),
 ]
