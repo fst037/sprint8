@@ -42,5 +42,5 @@ urlpatterns = [
     path('api/cuentas/<int:cuenta>/movimientos/', MovimientosCuenta.as_view(), name='movimientos_cuenta'),
     path('api/prestamos/', PrestamosCliente.as_view(), name='prestamos_cliente'),
     path('api/sucursales/', ListarSucursales.as_view(), name='listar_sucursales'),
-    path('api/tarjetas/', TarjetasClienteAPI.as_view(), name='tarjetas_cliente'),
+    path('api/tarjetas/<int:customer_id>/', TarjetasClienteAPI.as_view(), name='tarjetas_cliente'),
 ]

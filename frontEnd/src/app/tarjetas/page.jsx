@@ -1,5 +1,4 @@
 'use client'
-import tarjetas from '../api/listaTarjetas'
 import Link from 'next/link'
 import Cards from 'react-credit-cards-2';
 import 'react-credit-cards-2/dist/es/styles-compiled.css'

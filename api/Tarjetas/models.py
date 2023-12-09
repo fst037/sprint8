@@ -28,5 +28,3 @@ class Tarjeta(models.Model):
     class Meta:
         managed = False
         db_table = 'tarjeta'
-
-# Create your models here.
