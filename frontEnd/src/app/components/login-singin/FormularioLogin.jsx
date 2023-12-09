@@ -24,7 +24,8 @@ function LoginCampos() {
       if (response.status === 200) {
         // Store user credentials in local storage or cookie
         localStorage.setItem('username', username);
-        localStorage.setItem('password', password);        
+        localStorage.setItem('password', password);
+        localStorage.setItem('is_staff', response.data.is_staff);
         window.location.href = '/';
         redirect('/');        
       }
