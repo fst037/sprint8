@@ -2,13 +2,15 @@ from datetime import datetime
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.authentication import SessionAuthentication
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 from Clientes.models import Cliente
 from Prestamos.serializers import PrestamoSerializer
 from .models import Prestamo
 
 class PrestamosCliente(APIView):
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         prestamos = Prestamo.objects.filter(customer_id=request.user.userprofile.customer_id)

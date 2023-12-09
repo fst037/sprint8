@@ -7,13 +7,13 @@ from Login.models import UserProfile
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'password')
+        fields = '__all__'
 
 class RegisterUserSerializer(UserSerializer):
     customer = serializers.PrimaryKeyRelatedField(queryset=Cliente.objects.all())
 
     class Meta(UserSerializer.Meta):
-        fields = UserSerializer.Meta.fields + ('customer',)
+        fields = ('username', 'password', 'customer')
 
     def create(self, validated_data):
         customer = validated_data.pop('customer')

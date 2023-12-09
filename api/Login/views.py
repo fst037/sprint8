@@ -19,8 +19,6 @@ from django.contrib.auth import get_user_model
 from rest_framework.permissions import AllowAny
 
 
-
-
 class LoginAPIView(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
@@ -32,6 +30,7 @@ class LoginAPIView(APIView):
         return Response(serializer.data)
         
 user = get_user_model()
+
 class RegisterAPIView(APIView):
     permission_classes = [AllowAny]
     def post(self, request):
