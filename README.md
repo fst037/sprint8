@@ -1,20 +1,20 @@
-Comandos en orden para iniciar:
+#Comandos en orden para iniciar:
 
-#Consola 1
+  #Consola 1
 
-cmd
-cd virtualenv/Scripts
-activate
-cd ../../api
-py manage.py runserver
+    cmd
+    cd virtualenv/Scripts
+    activate
+    cd ../../api
+    py manage.py runserver
 
-#Consola 2
+  #Consola 2
 
-cmd
-cd virtualenv/Scripts
-activate
-cd ../../frontEnd
-npm run dev
+    cmd
+    cd virtualenv/Scripts
+    activate
+    cd ../../frontEnd
+    npm run dev
 
 #TESTING
 
