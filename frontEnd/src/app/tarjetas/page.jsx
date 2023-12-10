@@ -1,13 +1,12 @@
 'use client'
-import Link from 'next/link'
-import Cards from 'react-credit-cards-2';
-import 'react-credit-cards-2/dist/es/styles-compiled.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import TemplateTarjeta from '../components/tarjetas_prestamos/TemplateTarjeta';
+import styles from '../components/tarjetas_prestamos/tarjetas_prestamos.module.css';
 
 
 export default function Page() {
-  const [Cards, setCards] = useState([]);
+  const [cards, setCards] = useState([]);
   const username = localStorage.getItem('username');
   const password = localStorage.getItem('password');
 
@@ -18,30 +17,25 @@ export default function Page() {
           Authorization: `Basic ${btoa(`${username}:${password}`)}`
         }
       });
-    setCards(response.data);
+      setCards(response.data);
     }
     catch (error) {
-      console.error(error);
       alert("Error al obtener las tarjetas");
       console.log(error);
     }
   }
 
+  useEffect(() => {
+    getCards();
+  }, []);
+
   return (
     <>
       <h1>Tus tarjetas</h1>
-      <button onClick={getCards}>Obtener tarjetas</button>
-      <ul>
-        {Cards.map((Cards) => (
-          <li key={Cards.id} >
-            <Link href={`/tarjetas/${Cards.id}`}>
-              <Cards
-                name={username}
-                number={Cards.numero}
-                expiry={Cards.fechaexpiracion}
-                cvc={Cards.cvc}
-              />
-            </Link>
+      <ul className={styles.listaTarjetas}>
+        {cards.map((card) => (
+          <li key={card.id} >
+            <TemplateTarjeta elemento={card}/>
           </li>
         ))}
       </ul>

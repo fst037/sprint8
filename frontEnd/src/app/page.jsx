@@ -28,12 +28,6 @@ export default async function Home() {
             <p> Adquirí tu tarjeta de débito VISA de Itbank de forma sencilla y comienza a disfrutar de todas las ventajas que ofrece.</p>
             <Link href= "/"> <button className="btn-banner">Conocer más</button> </Link></div>
          <Image alt="tarjeta" src={tarjeta}/></div>
-          <div className="dashboard-item item2">
-          <div class="text-content">
-            <h2>Transferencias Instantáneas</h2>
-            <p>Facilitando tus transacciones de manera rápida y segura.</p>  
-            <Link href= "/transferencias"> <button className="btn-banner item2">Conocer más</button> </Link></div>     
-             <Image alt="pago" src={pago} /></div>
           <div className="dashboard-item item3">
           <div class="text-content">
             <h2>Paga con QR</h2>

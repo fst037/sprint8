@@ -18,12 +18,6 @@ function MenuLista({isOpen}) {
                     <Link className={styles.menuLink} href="/tarjetas">Tarjetas</Link>
                 </li>
                 <li className={styles.navBarListElem}>
-                    <Link className={styles.menuLink} href="/transferencias">Transferencias</Link>
-                </li>
-                <li className={styles.navBarListElem}>
-                    <Link className={styles.menuLink} href="/pagos">Pagos</Link>
-                </li>
-                <li className={styles.navBarListElem}>
                     <Link className={styles.menuLink} href="/prestamos">Prestamos</Link>
                 </li>
                 <li className={styles.navBarListElem}>

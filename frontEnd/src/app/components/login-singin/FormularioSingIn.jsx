@@ -31,13 +31,13 @@ function RegisterCampos() {
       if (response.status === 201) {
         alert("Usuario registrado con éxito");
         localStorage.setItem('username', username);
-        localStorage.setItem('password', password);        
+        localStorage.setItem('password', password);
+        localStorage.setItem('isStaff', false);       
         window.location.href = '/';
         redirect('/');     
       }
     } catch (error) {
       console.error(error);
-      alert("Error al registrar el usuario");
     }
   };
 

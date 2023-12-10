@@ -1,8 +1,8 @@
 'use client'
-
-import Link from "next/link.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios';
+import styles from '../components/tarjetas_prestamos/tarjetas_prestamos.module.css';
+import TemplatePrestamo from "../components/tarjetas_prestamos/TemplatePrestamo";
 
 export default function page() {
   const [prestamos, setPrestamos] = useState([]);
@@ -26,18 +26,21 @@ export default function page() {
     }
   };
 
+  useEffect(() => {
+    getPrestamos();
+  }, []);
+
 
   return (
-    <div>
+    <>
       <h1>Prestamos</h1>
-      <button onClick={getPrestamos}>Obtener prestamos</button>
-      <ul>
+      <ul className={styles.listaPrestamos}>
         {prestamos.map((prestamo) => (
           <li key={prestamo.loan_id} >
-            <pre>{JSON.stringify(prestamo, null, 2)}</pre>
+            <TemplatePrestamo elemento={prestamo} />
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 }
