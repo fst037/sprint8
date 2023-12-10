@@ -88,6 +88,9 @@ class PrestamosClienteEmpleado(APIView):
 
         cuentas = Cuenta.objects.filter(customer_id=prestamo.customer_id, tipo='CAPesos')
 
+        if len(cuentas) == 0:
+            return Response({'error': 'Solicitud rechazada: El cliente no tiene cuentas CAPesos.'}, status=status.HTTP_400_BAD_REQUEST)
+
         print(cuentas[0].balance)
         print(prestamo.loan_total)
         
