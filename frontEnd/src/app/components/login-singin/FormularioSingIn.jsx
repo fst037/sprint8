@@ -32,7 +32,7 @@ function RegisterCampos() {
         alert("Usuario registrado con éxito");
         localStorage.setItem('username', username);
         localStorage.setItem('password', password);
-        localStorage.setItem('isStaff', false);       
+        localStorage.setItem('is_staff', response.data.is_staff);  
         window.location.href = '/';
         redirect('/');     
       }

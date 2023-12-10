@@ -1,0 +1,19 @@
+.lineaListado {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ccc;
+    list-style-type: none;
+}
+
+.lineaListado:hover {
+    background-color: #eee;
+}
+
+.lineaListado li {
+    margin: 0px 0.5rem;
+}
+

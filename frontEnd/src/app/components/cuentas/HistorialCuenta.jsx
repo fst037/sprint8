@@ -24,13 +24,14 @@ function HistorialCuenta({cuenta, ult_5}) {
         });
 
         if (response.status === 200) {
-			setHistorialData(response.data);
+            let data = response.data;
+            if (ult_5) {
+                data = data.slice(-5);
+            }
+			setHistorialData(data);
             historialData.forEach(element => {            
                 filas.push(<FilaHistorialCuenta elemento={element}/>)
-            });
-            if (ult_5) {
-                historialData.splice(5);
-            }
+            });            
         }
         } catch (error) {
         console.error(error);
